@@ -16,19 +16,19 @@
     <id>2</id>
     <patternDescription>php code injection</patternDescription>
     <patternString><![CDATA[.*(define|eval|file_get_contents|include|require|require_once|set|shell_exec|phpinfo|system|passthru|preg_|execute|echo|print|print_r|var_dump|[fp]open)\(.*]]></patternString>
-    <module>unknown</module>
+    <module>php_code_inj</module>
   </request>
   <request>
     <id>3</id>
     <patternDescription>basic php code execution</patternDescription>
     <patternString><![CDATA[.*(<\?php).*]]></patternString>
-    <module>unknown</module>
+    <module>php_code_inj</module>
   </request>
   <request>
     <id>4</id>
     <patternDescription>SQL benchmark and sleep</patternDescription>
     <patternString><![CDATA[.*((select|;)\s+(benchmark|if|sleep)).*]]></patternString>
-    <module>unknown</module>
+    <module>blind_sqli</module>
   </request>
   <request>
     <id>5</id>
@@ -40,25 +40,25 @@
     <id>6</id>
     <patternDescription>html injection</patternDescription>
     <patternString><![CDATA[.*(<|%3c)(frame|applet|isindex|marquee|keygen|script|audio|video|input|button|textarea|style|base|body|meta|link|object|embed|param|plaintext|xml|image).*]]></patternString>
-    <module>unknown</module>
+    <module>html_code_inj</module>
   </request>
   <request>
     <id>7</id>
     <patternDescription>xml entity injection</patternDescription>
     <patternString><![CDATA[.*(element|entity|\[CDATA).*]]></patternString>
-    <module>unknown</module>
+    <module>xml_code_inj</module>
   </request>
   <request>
     <id>8</id>
     <patternDescription>basic XSS</patternDescription>
     <patternString><![CDATA[.*(alert|eval|msgbox|showmodaldialog|prompt|write|confirm|dialog|open).*]]></patternString>
-    <module>unknown</module>
+    <module>xss</module>
   </request>
   <request>
     <id>9</id>
     <patternDescription>JS properties and objects</patternDescription>
     <patternString><![CDATA[.*(hash|href|navigateandfind|source|pathname|close|constructor|port|protocol|assign|replace|back|forward|document|ownerdocument|window|self|parent|frames|cookie|innerhtml|innertext|resizeto|createstylesheet)\(.*]]></patternString>
-    <module>unknown</module>
+    <module>js_props</module>
   </request>
   <request>
     <id>10</id>
@@ -76,13 +76,13 @@
     <id>12</id>
     <patternDescription>XSS</patternDescription>
     <patternString><![CDATA[.*(script).*]]></patternString>
-    <module>unknown</module>
+    <module>xss</module>
   </request>
   <request>
     <id>13</id>
     <patternDescription>favicon.ico</patternDescription>
     <patternString><![CDATA[.*(favicon.ico).*]]></patternString>
-    <module>unknown</module>
+    <module>favicon</module>
   </request>
   <request>
     <id>14</id>
