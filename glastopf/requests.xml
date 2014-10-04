@@ -81,7 +81,7 @@
   <request>
     <id>13</id>
     <patternDescription>favicon.ico</patternDescription>
-    <patternString><![CDATA[.*(favicon.ico).*]]></patternString>
+    <patternString><![CDATA[.*(favicon\.ico).*]]></patternString>
     <module>favicon</module>
   </request>
   <request>
@@ -159,7 +159,7 @@
   <request>
     <id>26</id>
     <patternDescription>MediaWiki Thumb Exploit</patternDescription>
-    <patternString><![CDATA[/smdata\.dat]]></patternString>
+    <patternString><![CDATA[/smdata\.dat|/tree\.dat]]></patternString>
     <module>cuteftp_pass</module>
   </request>
 </requests>
