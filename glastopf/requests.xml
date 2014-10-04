@@ -141,7 +141,25 @@
   <request>
     <id>23</id>
     <patternDescription>Common PHPInfo test/debug resources</patternDescription>
-    <patternString><![CDATA[^/info.php|^/phpinfo.php|^/phpinfo.html]]></patternString>
+    <patternString><![CDATA[^/info\.php|^/phpinfo\.php|^/phpinfo\.html]]></patternString>
     <module>phpinfo</module>
+  </request>
+  <request>
+    <id>24</id>
+    <patternDescription>WP TimThumb Exploit</patternDescription>
+    <patternString><![CDATA[/timthumb\.php]]></patternString>
+    <module>timthumb</module>
+  </request>
+  <request>
+    <id>25</id>
+    <patternDescription>MediaWiki Thumb Exploit</patternDescription>
+    <patternString><![CDATA[/thumb\.php]]></patternString>
+    <module>mw_thumb</module>
+  </request>
+  <request>
+    <id>26</id>
+    <patternDescription>MediaWiki Thumb Exploit</patternDescription>
+    <patternString><![CDATA[/smdata\.dat]]></patternString>
+    <module>cuteftp_pass</module>
   </request>
 </requests>
