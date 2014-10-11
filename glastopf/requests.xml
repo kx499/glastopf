@@ -158,8 +158,32 @@
   </request>
   <request>
     <id>26</id>
-    <patternDescription>MediaWiki Thumb Exploit</patternDescription>
+    <patternDescription>CuteFTP Password Exposure</patternDescription>
     <patternString><![CDATA[/smdata\.dat|/tree\.dat]]></patternString>
     <module>cuteftp_pass</module>
+  </request>
+  <request>
+    <id>27</id>
+    <patternDescription>LondonLive Theme Exploit</patternDescription>
+    <patternString><![CDATA[^/wp-content/themes/LondonLive]]></patternString>
+    <module>londonlive</module>
+  </request>
+  <request>
+    <id>28</id>
+    <patternDescription>IIS ADM Password</patternDescription>
+    <patternString><![CDATA[^/iisadmpwd/]]></patternString>
+    <module>iisadmpwd</module>
+  </request>
+  <request>
+    <id>29</id>
+    <patternDescription>SQL Injection Patterns</patternDescription>
+    <patternString><![CDATA[.*[a-zA-Z-_]+\.php\?[a-zA-Z]+=$]]></patternString>
+    <module>sqli_scan</module>
+  </request>
+  <request>
+    <id>31</id>
+    <patternDescription>ShellShock</patternDescription>
+    <patternString><![CDATA[.*()\s{.*]]></patternString>
+    <module>shellshock</module>
   </request>
 </requests>

@@ -103,9 +103,7 @@ class Classifier(object):
             #TODO: Rules for specific method. We should add a tag in the
             # rule to identify which rule it applies.
             # And some forms would send data in GET and POST methods.
-            if http_request.command == "GET":
-                match = re_pattern.search(unquoted_url)
-            elif http_request.command == "POST":
+            if http_request.command == "POST" or http_request.command == "GET":
                 match = re_pattern.search(unquoted_url)
                 if match == 'unknown':
                     match = re_pattern.search(http_request.request_body)
