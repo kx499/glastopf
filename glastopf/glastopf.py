@@ -25,6 +25,7 @@ import sys
 import Queue
 import string
 import random
+import re
 
 from ConfigParser import ConfigParser
 import logging.handlers
@@ -93,6 +94,11 @@ class GlastopfHoneypot(object):
         self.post_queue = Queue.Queue()
         self.workers_enabled = False
 
+        #load list of logging exclusions
+        with open('logging_exclusions.txt') as F:
+            excl_list = F.read().split('\n')
+        self.excl_regex = '(?:%s)' % '|'.join(excl_list)
+
     def start_background_workers(self):
         """
         Starts background threads responsible for data processing and logging.
@@ -122,14 +128,15 @@ class GlastopfHoneypot(object):
             attack_event = self.post_queue.get()
             self.dork_generator.collect_dork(attack_event)
 
-            if self.maindb:
-                self.maindb.insert(attack_event)
+            if not re.match(self.excl_regex, attack_event.source_addr[0]):
+                if self.maindb:
+                    self.maindb.insert(attack_event)
 
-            for _logger in self.loggers:
-                try:
-                    _logger.insert(attack_event)
-                except Exception as ex:
-                    logger.exception('Error while logging using {0}: {1}'.format(_logger, ex))
+                for _logger in self.loggers:
+                    try:
+                        _logger.insert(attack_event)
+                    except Exception as ex:
+                        logger.exception('Error while logging using {0}: {1}'.format(_logger, ex))
 
     def setup_dork_generator(self, conf_parser, work_dir):
         file_processor = dork_file_processor.DorkFileProcessor(self.dorkdb)
