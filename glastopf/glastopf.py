@@ -95,7 +95,7 @@ class GlastopfHoneypot(object):
         self.workers_enabled = False
 
         #load list of logging exclusions
-        with open('logging_exclusions.txt') as F:
+        with open(os.path.join(package_directory, 'logging_exclusions.txt')) as F:
             excl_list = F.read().split('\n')
         self.excl_regex = '(?:%s)' % '|'.join(excl_list)
 
