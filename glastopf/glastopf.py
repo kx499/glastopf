@@ -97,7 +97,8 @@ class GlastopfHoneypot(object):
         #load list of logging exclusions
         with open(os.path.join(package_directory, 'logging_exclusions.txt')) as F:
             excl_list = F.read().split('\n')
-        self.excl_regex = '(?:%s)' % '|'.join(excl_list)
+        self.excl_regex = '(?:%s)' % '|'.join(excl_list)[:-1]
+        
 
     def start_background_workers(self):
         """
@@ -127,7 +128,6 @@ class GlastopfHoneypot(object):
         while self.workers_enabled:
             attack_event = self.post_queue.get()
             self.dork_generator.collect_dork(attack_event)
-
             if not re.match(self.excl_regex, attack_event.source_addr[0]):
                 if self.maindb:
                     self.maindb.insert(attack_event)
